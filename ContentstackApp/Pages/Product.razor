@@ -1,0 +1,22 @@
+﻿@page "/product"
+
+<div class="card">
+    <div class="card-body">
+        @if (ResponseProduct.IsNull())
+        {
+            <img class="loading" src="gift/loading.gif" />
+        }
+        else
+        {
+            <h1>@ResponseProduct.Products.Title</h1>
+
+            <div class="alert alert-secondary mt-4" role="alert">
+                <span class="text-wrap">
+                    @ResponseProduct.Products.Description
+                </span>
+            </div>
+
+            <ProductList ProductDetailList="ResponseProduct.Products.ProductDetailList" CardsStyle="@ResponseProduct.Products.CardsStyle"/>
+        }
+    </div>
+</div>

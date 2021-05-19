@@ -1,0 +1,27 @@
+﻿
+<div class="row">
+    @if (!ProductDetailList.IsNull() && ProductDetailList.Count > 0 && !CardsStyle.IsNull())
+    {
+        foreach (ProductDetail product in ProductDetailList)
+        {
+            foreach (VideoImage videoImage in product.VideoImages)
+            {
+                if (videoImage.ImagesContainer.IsNull())
+                {
+                    continue;
+                }
+
+                <div class="col-sm-4 d-flex align-items-stretch">
+                    <div class="card bg-@CardsStyle.BackgroundColor">
+                        <img class="card-img-top" src="@videoImage.ImagesContainer.Images.First().Url" alt="Card image cap">
+                        <div class="card-body text-@CardsStyle.TextColor">
+                            <h5 class="card-title">@product.Title</h5>
+                            <p class="card-text">@product.Abstract</p>
+                            <a href="/product/@product.Uid/@CardsStyle.BackgroundColor" class="btn btn-@CardsStyle.ButtonColor">Product info</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>
